@@ -1,49 +1,64 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/quizapp.dart';
 
-
-
 class QuizOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar( //App bar one *******************************************
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        //App bar one *******************************************
         centerTitle: true,
-        backgroundColor: Colors.teal,
-        title: const Text('Main Page'),
+        backgroundColor: Colors.amberAccent,
+        title: const Text(
+          'Quiz App',
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 50, color: Colors.black),
+        ),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
             children: const [
+              SizedBox(
+                height: 150,
+              ),
               Expanded(
-                  child:Center(
-                    child: Text("Select Yor Choice",style: TextStyle(
-                        fontWeight: FontWeight.bold,fontSize: 30,color: Colors.white
-                    ),),
-                  ) )
+                  child: Center(
+                child: Text(
+                  "Select Yor Choice",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 50,
+                      color: Colors.teal),
+                ),
+              ))
             ],
           ),
-          Center(
-            child: Card(
-              child: ElevatedButton(
-                  child: const Text('Python Quiz'),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/second');
-                  }),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 100),
+                child: Card(
+                  child: ElevatedButton(
+                      child: const Text('Python Quiz'),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/second');
+                      }),
+                ),
+              ),
+              Card(
+                child: ElevatedButton(
+                    child: const Text('C.Quiz'),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/Third');
+                    }),
+              ),
+            ],
           ),
-          Center(
-            child: Card(
-              child: ElevatedButton(
-                  child: const Text('C.Quiz'),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Third');
-                  }),
-            ),
-          ),
-
         ],
       ),
     );
@@ -53,11 +68,8 @@ class QuizOne extends StatelessWidget {
 //*************python Quiz Appp*****************************
 
 class MyApp extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
-
     return (MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -72,15 +84,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 //*******************C Quiz App**********************************
 
 class QuizThree extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
-
     return (MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -89,16 +97,8 @@ class QuizThree extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.green,
         ),
-        body:const CQuizApp(),
+        body: const CQuizApp(),
       ),
     ));
   }
 }
-
-
-
-
-
-
-
-
