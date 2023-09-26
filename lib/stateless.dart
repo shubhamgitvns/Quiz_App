@@ -116,7 +116,7 @@ class QuizOne extends StatelessWidget {
                         ]),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/second');
+                        Navigator.pushNamed(context, '/Third');
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Colors.white,
@@ -142,7 +142,7 @@ class QuizOne extends StatelessWidget {
   }
 }
 
-//*************python Quiz Appp*****************************
+//<<<<<<<<<<<<<<<<python Quiz App>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>./
 
 class MyApp extends StatelessWidget {
   @override
@@ -154,6 +154,8 @@ class MyApp extends StatelessWidget {
           title: Text("Python Quiz"),
           centerTitle: true,
           backgroundColor: Colors.amber,
+          shadowColor: Colors.grey,
+
         ),
         body: const QuizApp(),
       ),
