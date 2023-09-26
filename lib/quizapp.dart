@@ -23,12 +23,15 @@ class _QuizAppState extends State<QuizApp> {
   String correctanswer = "";
   String message = "Clicked";
   String length = "length";
-  String question = "Press the button to start the Quiz";
+  String question = "Press The Start Button To Start The Quiz..";
   String opt1 = "";
   String opt2 = "";
   String opt3 = "";
   String opt4 = "";
+  String buttonlevel = "Start";
   int i = 0;
+  Color buttoncolorred = Colors.teal.shade400;
+
   List<Widget> scores = [];
   void _handleOptionChange(int? value) {
     setState(() {
@@ -151,77 +154,86 @@ class _QuizAppState extends State<QuizApp> {
                           spreadRadius: 1.0,
                         ),
                       ]),
-                  child: ElevatedButton(
-                      child: Text("click me $counter"),
-                      onPressed: () async {
-                        print("counter$counter");
-                        if (counter == -1) {
-
-                          //*******if question start than question is downloaded**********************
-
-                          data = await Utilities.downloadQuestions(link);
-                          data = data["questions"];
-
-                          //create the question array length
-                          n = data.length;
-                          for (int i = 0; i <= n-1; i++) {
-                            question = data[i]["question"];
-                            opt1 = data[i]["opta"];
-                            opt2 = data[i]["optb"];
-                            opt3 = data[i]["optc"];
-                            opt4 = data[i]["optd"];
-                            correctanswer = data[i]["correctanswer"];
-                            questions.add(Question(
-                                question, opt1, opt2, opt3, opt4, correctanswer));
+                  child: SizedBox(
+                    width: 150,
+                    child: ElevatedButton(
+                        child: Text(buttonlevel),
+                        onPressed: () async {
+              //<<<<<<<<<<Start the test then button text and color is change>>>>>>>>>>>>>>>>//
+                          if(counter>=-1){
+                            buttonlevel="Submit";
+                            buttoncolorred =Colors.lightGreen.shade600;
                           }
-                          questions.add(Question("", "", "", "", "", ""));
-                          print(questions);
+
+                          if (counter == -1) {
+
+                            //*******if question start than question is downloaded**********************
+
+                            data = await Utilities.downloadQuestions(link);
+                            data = data["questions"];
+
+                            //create the question array length
+                            n = data.length;
+                            for (int i = 0; i <= n-1; i++) {
+                              question = data[i]["question"];
+                              opt1 = data[i]["opta"];
+                              opt2 = data[i]["optb"];
+                              opt3 = data[i]["optc"];
+                              opt4 = data[i]["optd"];
+                              correctanswer = data[i]["correctanswer"];
+                              questions.add(Question(
+                                  question, opt1, opt2, opt3, opt4, correctanswer));
+                            }
+                            questions.add(Question("", "", "", "", "", ""));
+                            print(questions);
+                            counter++;
+                            currentquestion = questions[counter];
+                            question=currentquestion!.question;
+                            opt1 = currentquestion!.opta;
+                            opt2 = currentquestion!.optb;
+                            opt3 = currentquestion!.optc;
+                            opt4 = currentquestion!.optd;
+                            correctanswer = currentquestion!.correctanswer;
+                            setState(() {});
+                            return;
+                          }
+                          addResult(_selectedOption);
                           counter++;
+                          currentquestion = questions[counter];
+                          question =currentquestion!.question;
+                          correctanswer = currentquestion!.correctanswer;
+
+                          if (counter >= n) {
+                            setState(() {});
+                            // addResult(_selectedOption);
+                            print("Test over");
+                            question = "Test over correct answer=$point";
+                            opt1 = "";
+                            opt2 = "";
+                            opt3 = "";
+                            opt4 = "";
+                            // counter=-1;
+                            // buttonlevel = "Restart";
+                            return;
+                          }
+
                           currentquestion = questions[counter];
                           question=currentquestion!.question;
                           opt1 = currentquestion!.opta;
                           opt2 = currentquestion!.optb;
                           opt3 = currentquestion!.optc;
-                          opt4 = currentquestion!.optd;
+                          opt4 = currentquestion!.optc;
                           correctanswer = currentquestion!.correctanswer;
+
                           setState(() {});
-                          return;
-                        }
-                        addResult(_selectedOption);
-                        counter++;
-                        currentquestion = questions[counter];
-                        question =currentquestion!.question;
-                        correctanswer = currentquestion!.correctanswer;
-
-                        if (counter >= n) {
-                          setState(() {});
-                          // addResult(_selectedOption);
-                          print("Test over");
-                          question = "Test over correct answer=$point";
-                          opt1 = "";
-                          opt2 = "";
-                          opt3 = "";
-                          opt4 = "";
-                          message = "Restart";
-                          return;
-                        }
-
-                        currentquestion = questions[counter];
-                        question=currentquestion!.question;
-                        opt1 = currentquestion!.opta;
-                        opt2 = currentquestion!.optb;
-                        opt3 = currentquestion!.optc;
-                        opt4 = currentquestion!.optc;
-                        correctanswer = currentquestion!.correctanswer;
-
-                        setState(() {});
-                      },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.lightGreen[700],
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 32, vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        },
+                      style: ElevatedButton.styleFrom(
+                        primary:  buttoncolorred,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 32, vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                       ),
                     ),
                   ),

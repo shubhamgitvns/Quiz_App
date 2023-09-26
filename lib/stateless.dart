@@ -153,7 +153,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("Python Quiz"),
           centerTitle: true,
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.teal,
           shadowColor: Colors.grey,
 
         ),
