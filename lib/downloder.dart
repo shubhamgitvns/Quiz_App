@@ -3,7 +3,9 @@ import 'dart:convert' as convert;
 
 class Utilities {
   static Future downloadQuestions(String link) async {
-    final url = Uri.https("gist.githubusercontent.com", link, {});
+    String base = "directsell.biz";
+    final url = Uri.http(base, link, {});
+    print("URL$link");
 
     try {
       final response = await http.get(url);
@@ -18,6 +20,4 @@ class Utilities {
       return false;
     }
   }
-
-
 }

@@ -4,6 +4,7 @@ import 'classes.dart';
 import 'downloder.dart';
 
 //<<<<<<<<<<<<<<<<<<<<Python language quiz>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>./
+
 class QuizApp extends StatefulWidget {
   const QuizApp({Key? key}) : super(key: key);
 
@@ -15,7 +16,7 @@ class _QuizAppState extends State<QuizApp> {
   List<Question> questions = [];
   Question? currentquestion; // create the question variable
   String link =
-      "shubhamgitvns/89d337387aaf2d1f2f134a51fd327078/raw/6097508e7368d3930e23fe33001c576e4176de8a/array.json";
+      "/json/quiz.json";
   dynamic data;
   int counter = -1, n = -1;
   int _selectedOption = 0;
@@ -79,36 +80,37 @@ class _QuizAppState extends State<QuizApp> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Container(
-                  width: 250,
-                  height: 50,
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(0xffb74093),
-                        Color(0xff123456),
-                      ],
-                    ),
-                  ),
-                  child: Center(
-                      child: Text(
-                    "Time Remaining: $_Counter",
-                    style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  )),
-                ),
-              ),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     // Padding(
+          //     //   padding: const EdgeInsets.only(top: 20),
+          //     //   child: Container(
+          //     //     width: 250,
+          //     //     height: 50,
+          //     //     decoration: const BoxDecoration(
+          //     //       gradient: LinearGradient(
+          //     //         begin: Alignment.topCenter,
+          //     //         end: Alignment.bottomCenter,
+          //     //         colors: [
+          //     //           Color(0xffb74093),
+          //     //           Color(0xff123456),
+          //     //         ],
+          //     //       ),
+          //     //     ),
+          //     //     child: Center(
+          //     //         child: Text(
+          //     //       "Time Remaining: $_Counter",
+          //     //       style: const TextStyle(
+          //     //           fontSize: 20,
+          //     //           fontWeight: FontWeight.bold,
+          //     //           color: Colors.white),
+          //     //     )),
+          //     //   ),
+          //     // ),
+          //   ],
+          // ),
+
           Expanded(
             flex: 3,
             child: Padding(
@@ -136,7 +138,7 @@ class _QuizAppState extends State<QuizApp> {
                       title: Text(
                         opt1,
                         style: const TextStyle(
-                          fontSize: 25.0,
+                          fontSize: 20.0,
                           color: Colors.black,
                         ),
                       ),
@@ -147,7 +149,7 @@ class _QuizAppState extends State<QuizApp> {
                     RadioListTile(
                       title: Text(opt2,
                           style: const TextStyle(
-                            fontSize: 25.0,
+                            fontSize: 20.0,
                             color: Colors.black,
                           )),
                       value: 2,
@@ -158,7 +160,7 @@ class _QuizAppState extends State<QuizApp> {
                       title: Text(
                         opt3,
                         style: const TextStyle(
-                          fontSize: 25.0,
+                          fontSize: 20.0,
                           color: Colors.black,
                         ),
                       ),
@@ -169,7 +171,7 @@ class _QuizAppState extends State<QuizApp> {
                     RadioListTile(
                       title: Text(opt4,
                           style: const TextStyle(
-                            fontSize: 25.0,
+                            fontSize: 20.0,
                             color: Colors.black,
                           )),
                       value: 4,
@@ -355,12 +357,12 @@ class _QuizAppState extends State<QuizApp> {
                           question = currentquestion!.question;
                           correctanswer = currentquestion!.correctanswer;
 //<<<<<<<<<<<<<<<<<<<<<<<<<<Restart condition>>>>>>>>>>>>>>>>>.//
-                          if (counter >= n || _Counter==0) {
+                          if (counter >= n) {
                             setState(() {});
                             _timer.cancel();
                             //startTimer();
                             print("Test over");
-                            Text("$_Counter");
+                            Center(child: Text("$_Counter"));
                             question = "Test over correct answer=$point";
                             opt1 = "";
                             opt2 = "";
