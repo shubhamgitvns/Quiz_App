@@ -93,6 +93,7 @@ class QuizOne extends StatelessWidget {
                         child: Image.network("http://directsell.biz/json/python.jpg",
                             height: 100, width: 100),
                       ),
+
                     ),
                   ),
                   Container(

@@ -15,7 +15,7 @@ class QuizApp extends StatefulWidget {
 class _QuizAppState extends State<QuizApp> {
   List<Question> questions = [];
   Question? currentquestion; // create the question variable
-  String link =Utilities.currentpath;
+  String link = Utilities.currentpath;
   dynamic data;
   int counter = -1, n = -1;
   int _selectedOption = 0;
@@ -76,7 +76,7 @@ class _QuizAppState extends State<QuizApp> {
     return SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Row(
           //   mainAxisAlignment: MainAxisAlignment.center,
@@ -115,7 +115,7 @@ class _QuizAppState extends State<QuizApp> {
               padding: const EdgeInsets.all(10.0),
               child: Center(
                 child: Text(
-                  question,
+                  'Q: $question',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -129,7 +129,7 @@ class _QuizAppState extends State<QuizApp> {
               child: Center(
                 child: GridView.count(
                   crossAxisCount: 2,
-                  childAspectRatio: 3.0,
+                  childAspectRatio: 1.0,
                   padding: const EdgeInsets.all(10.0),
                   children: <Widget>[
                     RadioListTile(
@@ -215,14 +215,15 @@ class _QuizAppState extends State<QuizApp> {
                           startTimer();
                           showrnot = true;
                           Test_start = true;
-                          //<<<<<<<<<<Start to submit  button change >>>>>>>>>>>>>>>>//
 
+                          //<<<<<<<<<<Start to submit  button change >>>>>>>>>>>>>>>>//
                           if (counter >= -1) {
                             buttonlevel = "Submit";
                             buttoncolorred = Colors.lightGreen.shade600;
                           }
 
                           //<<<<<<<<<<Start the test then button text and color is change>>>>>>>>>>>>>>>>//
+
                           if (counter == -1) {
                             //*******if question start than question is downloaded**********************
 
@@ -326,6 +327,8 @@ class _QuizAppState extends State<QuizApp> {
 
                             //create the question array length
                             n = data.length;
+                            buttonlevel = "Submit";
+                            buttoncolorred = Colors.lightGreen.shade600;
                             for (int i = 0; i <= n - 1; i++) {
                               question = data[i]["question"];
                               opt1 = data[i]["opta"];
@@ -357,11 +360,11 @@ class _QuizAppState extends State<QuizApp> {
 //<<<<<<<<<<<<<<<<<<<<<<<<<<Restart condition>>>>>>>>>>>>>>>>>.//
                           if (counter >= n) {
                             setState(() {});
-                            _timer.cancel();
+                            //_timer.cancel();
                             //startTimer();
                             print("Test over");
-                            Center(child: Text("$_Counter"));
-                            question = "Test over correct answer=$point";
+                            question =
+                                "Test Over Correct Answer=$point";
                             opt1 = "";
                             opt2 = "";
                             opt3 = "";
@@ -371,8 +374,11 @@ class _QuizAppState extends State<QuizApp> {
                             counter = -1;
                             buttonlevel = "Restart";
                             buttoncolorred = Colors.red;
+                            scores.clear();
                             return;
+
                           } //<<<<<<<<<<<<<<<<<<<<<<<<<<Restart condition end>>>>>>>>>>>>>>>>>.//
+
 
                           currentquestion = questions[counter];
                           question = currentquestion!.question;
@@ -407,4 +413,3 @@ class _QuizAppState extends State<QuizApp> {
     );
   }
 }
-
