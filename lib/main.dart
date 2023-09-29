@@ -7,6 +7,5 @@ void main() => runApp( MaterialApp(
   routes: {
     '/': (context) => QuizOne(),
     '/second': (context) => MyApp(),
-    '/Third': (context) => QuizThree(),
   },
 ));

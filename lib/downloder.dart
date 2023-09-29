@@ -2,6 +2,13 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
 class Utilities {
+  //<<<<<<<<<<<<<< Create Quiz Path >>>>>>>>>>>>>>>>>>//
+  static String pythonpath="/json/quiz.json";
+  static String cpath="/json/c.json";
+  static String currentpath="";
+
+  //<<<<<<<<<<<<<< Create Quiz App_Bar Title  >>>>>>>>>>>>>>>>>>//
+  static String quiztitle="";
   static Future downloadQuestions(String link) async {
     String base = "directsell.biz";
     final url = Uri.http(base, link, {});

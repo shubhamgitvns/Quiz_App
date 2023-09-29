@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/downloder.dart';
 import 'package:quiz_app/quizapp.dart';
 
 class QuizOne extends StatelessWidget {
@@ -77,6 +78,8 @@ class QuizOne extends StatelessWidget {
                           ]),
                       child: ElevatedButton(
                         onPressed: () {
+                          Utilities.currentpath=Utilities.pythonpath;
+                          Utilities.quiztitle="Python Quiz";
                           Navigator.pushNamed(context, '/second');
                         },
                         style: ElevatedButton.styleFrom(
@@ -87,7 +90,7 @@ class QuizOne extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        child: Image.network("http://directsell.biz/logo.png",
+                        child: Image.network("http://directsell.biz/json/python.jpg",
                             height: 100, width: 100),
                       ),
                     ),
@@ -114,7 +117,9 @@ class QuizOne extends StatelessWidget {
                         ]),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/Third');
+                        Utilities.currentpath=Utilities.cpath;
+                        Utilities.quiztitle="C Quiz";
+                        Navigator.pushNamed(context, '/second');
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Colors.white,
@@ -124,7 +129,7 @@ class QuizOne extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      child: Image.network("http://directsell.biz/logo.png",
+                      child: Image.network("http://directsell.biz/json/c.jpg",
                           height: 100, width: 100),
                     ),
                   ),
@@ -138,7 +143,7 @@ class QuizOne extends StatelessWidget {
   }
 }
 
-//<<<<<<<<<<<<<<<<python Quiz App>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>./
+//<<<<<<<<<<<<<<<< All Quiz App-Bar>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>./
 
 class MyApp extends StatelessWidget {
   @override
@@ -147,7 +152,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Python Quiz"),
+          title: Text(Utilities.quiztitle),
           centerTitle: true,
           backgroundColor: Colors.teal,
           shadowColor: Colors.grey,
@@ -158,21 +163,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//*******************C Quiz App**********************************
 
-class QuizThree extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return (MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("C.Quiz"),
-          centerTitle: true,
-          backgroundColor: Colors.green,
-        ),
-        body: const CQuizApp(),
-      ),
-    ));
-  }
-}
