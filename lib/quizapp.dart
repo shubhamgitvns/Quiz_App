@@ -34,6 +34,7 @@ class _QuizAppState extends State<QuizApp> {
   int _Counter = 10;
   late Timer _timer;
   bool showrnot = false;
+  bool showradiobutton = false;
   bool Test_start = false;
   bool Test_over = false;
   List<Widget> scores = [];
@@ -122,6 +123,7 @@ class _QuizAppState extends State<QuizApp> {
             ),
           ),
           //<<<<<<Visible options before click the start button>>>>>>>>>>>>./
+
           Visibility(
             visible: showrnot,
             child: Expanded(
@@ -132,6 +134,7 @@ class _QuizAppState extends State<QuizApp> {
                   childAspectRatio: 1.0,
                   padding: const EdgeInsets.all(10.0),
                   children: <Widget>[
+
                     RadioListTile(
                       title: Text(
                         opt1,
@@ -215,6 +218,7 @@ class _QuizAppState extends State<QuizApp> {
                           startTimer();
                           showrnot = true;
                           Test_start = true;
+                          _selectedOption=0;
 
                           //<<<<<<<<<<Start to submit  button change >>>>>>>>>>>>>>>>//
                           if (counter >= -1) {
@@ -318,7 +322,6 @@ class _QuizAppState extends State<QuizApp> {
                         child: Text(buttonlevel),
                         onPressed: () async {
                           showrnot = true;
-
                           if (counter == -1) {
                             //*******if question start than question is downloaded**********************
 
@@ -354,6 +357,8 @@ class _QuizAppState extends State<QuizApp> {
                           }
                           addResult(_selectedOption);
                           counter++;
+                          // selected option remove after question loading.
+                          _selectedOption=0;
                           currentquestion = questions[counter];
                           question = currentquestion!.question;
                           correctanswer = currentquestion!.correctanswer;
