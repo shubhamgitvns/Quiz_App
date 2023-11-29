@@ -79,37 +79,7 @@ class _QuizAppState extends State<QuizApp> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     // Padding(
-          //     //   padding: const EdgeInsets.only(top: 20),
-          //     //   child: Container(
-          //     //     width: 250,
-          //     //     height: 50,
-          //     //     decoration: const BoxDecoration(
-          //     //       gradient: LinearGradient(
-          //     //         begin: Alignment.topCenter,
-          //     //         end: Alignment.bottomCenter,
-          //     //         colors: [
-          //     //           Color(0xffb74093),
-          //     //           Color(0xff123456),
-          //     //         ],
-          //     //       ),
-          //     //     ),
-          //     //     child: Center(
-          //     //         child: Text(
-          //     //       "Time Remaining: $_Counter",
-          //     //       style: const TextStyle(
-          //     //           fontSize: 20,
-          //     //           fontWeight: FontWeight.bold,
-          //     //           color: Colors.white),
-          //     //     )),
-          //     //   ),
-          //     // ),
-          //   ],
-          // ),
-
+          
           Expanded(
             flex: 3,
             child: Padding(
